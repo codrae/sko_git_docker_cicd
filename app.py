@@ -1,10 +1,14 @@
+import os
 from flask import Flask
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hello! CI/CD와 Docker 체험 성공입니다! 수정수정 이렇게 !"
+    # 문구를 마음대로 바꿔봐!
+    return "Hello! 이것은 자동 배포된 웹사이트입니다!"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    # 서버가 제공하는 PORT 환경변수를 사용하고, 없으면 5000번을 쓴다.
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
