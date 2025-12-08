@@ -1,30 +1,22 @@
-네, 요청하신 **README.md** 파일을 아주 깔끔하고 친절한 가이드 형식으로 작성해 드릴게요.
+# 🚀 CI/CD, Git, Docker 실전 가이드 (With Render)
 
-이 내용을 복사해서 GitHub 저장소의 `README.md` 파일에 붙여넣으시면 됩니다. 다른 사람들이 이 프로젝트를 보고 따라 하며 CI/CD와 Docker를 배울 수 있도록 구성했습니다.
+이 프로젝트는 Python Flask 웹 애플리케이션을 사용하여 **Git 버전 관리**, **Docker 컨테이너화**, 그리고 **GitHub Actions + Render**를 연동한 **완벽한 자동화 파이프라인**을 구축하는 튜토리얼입니다.
 
------
+## 🎯 목표
 
-# 🚀 CI/CD, Git, Docker 체험하기 (Hands-on Guide)
-
-이 프로젝트는 간단한 Python Flask 웹 애플리케이션을 사용하여 **Git 버전 관리**, **Docker 컨테이너화**, 그리고 **GitHub Actions를 이용한 CI/CD(지속적 통합/배포)** 파이프라인을 직접 구축하고 체험해 보기 위한 튜토리얼 저장소입니다.
-
-## 🛠 사용 기술 (Tech Stack)
-
-  * **Language:** Python 3.9 (Flask)
-  * **Container:** Docker
-  * **VCS:** Git & GitHub
-  * **CI/CD:** GitHub Actions
-  * **Deployment:** Railway or Render (권장)
+1.  **Docker:** 애플리케이션을 컨테이너로 포장하기.
+2.  **CI (지속적 통합):** 코드가 GitHub에 올라오면 자동으로 테스트하고 빌드 확인하기.
+3.  **CD (지속적 배포):** 테스트가 통과된 경우에만 Render 서버에 자동으로 배포하기.
 
 -----
 
-## 1️⃣ 프로젝트 파일 작성 (Step 1: Code Setup)
+## 1️⃣ 프로젝트 파일 준비 (Step 1: File Setup)
 
-프로젝트 폴더 안에 다음 파일들을 생성합니다.
+프로젝트 폴더에 다음 파일들을 작성합니다.
 
 ### 1\. 웹 서버 코드 (`app.py`)
 
-간단한 웹 서버를 실행하는 코드입니다. 포트 설정이 포함되어 있어 클라우드 배포 시 자동으로 포트를 할당받습니다.
+클라우드 환경(Render)의 포트 설정을 지원하는 웹 서버 코드입니다.
 
 ```python
 import os
@@ -37,14 +29,14 @@ def hello():
     return "Hello! CI/CD와 Docker 체험 성공입니다!"
 
 if __name__ == '__main__':
-    # 환경변수 PORT가 있으면 사용하고, 없으면 5000번 사용
+    # Render가 제공하는 PORT 환경변수를 사용 (없으면 5000)
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
 ```
 
 ### 2\. 테스트 코드 (`test_app.py`)
 
-서버가 정상적으로 응답하는지 검사하는 자동 테스트 코드입니다.
+CI 과정에서 실행될 테스트 시나리오입니다.
 
 ```python
 import pytest
@@ -59,16 +51,12 @@ def test_hello():
 
 ### 3\. 라이브러리 목록 (`requirements.txt`)
 
-필요한 패키지를 정의합니다.
-
 ```text
 flask
 pytest
 ```
 
-### 4\. Docker 이미지 설계도 (`Dockerfile`)
-
-확장자 없이 파일명을 `Dockerfile`로 생성합니다.
+### 4\. Docker 설정 (`Dockerfile`)
 
 ```dockerfile
 FROM python:3.9-slim
@@ -85,8 +73,6 @@ CMD ["python", "app.py"]
 
 ### 5\. Git 무시 목록 (`.gitignore`)
 
-Git에 업로드하지 않을 파일들을 지정합니다.
-
 ```text
 __pycache__/
 venv/
@@ -95,40 +81,62 @@ venv/
 
 -----
 
-## 2️⃣ Git 설정 및 원격 저장소 연결 (Step 2: Git Push)
+## 2️⃣ GitHub 저장소 연결 (Step 2: Git Push)
 
-터미널(Terminal)을 열고 프로젝트 폴더에서 아래 명령어들을 순서대로 입력하여 GitHub에 코드를 업로드합니다.
+터미널에서 아래 명령어를 입력하여 GitHub에 코드를 업로드합니다.
 
 ```bash
-# 1. Git 초기화
 git init
-
-# 2. 모든 파일 스테이징
 git add .
-
-# 3. 커밋 생성
-git commit -m "Initial commit: Set up Flask app with Docker and Tests"
-
-# 4. 브랜치명을 main으로 변경
+git commit -m "Initial commit"
 git branch -M main
-
-# 5. 원격 저장소 연결 (본인의 저장소 주소 확인!)
-git remote add origin https://github.com/codrae/sko_git_docker_cicd.git
-
-# 6. GitHub로 업로드 (Push)
+# 본인의 저장소 주소로 변경해주세요!
+git remote add origin <본인 원격 저장소>
 git push -u origin main
 ```
 
 -----
 
-## 3️⃣ CI/CD 파이프라인 설정 (Step 3: GitHub Actions)
+## 3️⃣ Render 서버 구축 및 Deploy Hook 설정 (Step 3: Render Setup)
 
-GitHub에 코드가 올라갈 때마다 **자동으로 테스트하고 빌드**하도록 설정합니다.
+자동 배포를 위해 **Render** 서비스를 설정합니다.
 
-1.  프로젝트 폴더 내에 `.github/workflows/ci.yml` 경로로 폴더와 파일을 생성합니다.
-2.  `ci.yml` 파일에 아래 내용을 작성합니다.
+1.  **[Render.com](https://render.com/)** 회원가입 및 로그인.
+2.  `New +` -\> `Web Service` -\> `Build and deploy from a Git repository` 선택.
+3.  본인의 GitHub 저장소(`sko_git_docker_cicd`) 연결.
+4.  **설정:**
+      * **Runtime:** Docker
+      * **Region:** Singapore (권장)
+      * **Free Plan** 선택 후 생성.
 
-<!-- end list -->
+### ✨ 중요: "진짜 CI/CD"를 위한 Deploy Hook 설정
+
+Render가 멋대로 배포하지 못하게 막고, **테스트 통과 시에만 배포**되도록 설정합니다.
+
+1.  Render 대시보드 -\> **Settings** 메뉴 클릭.
+2.  **Auto-Deploy** 항목을 찾아 \*\*`No`\*\*로 변경하고 저장.
+3.  바로 아래 **Deploy Hook** 항목에 있는 URL(`https://api.render.com/...`)을 **복사**합니다.
+
+-----
+
+## 4️⃣ GitHub Secrets 설정 (Step 4: Secrets)
+
+Render의 배포 주소(Deploy Hook)를 GitHub에 안전하게 저장합니다.
+
+1.  GitHub 저장소 상단 **Settings** 탭 클릭.
+2.  왼쪽 메뉴 **Secrets and variables** -\> **Actions** 클릭.
+3.  **[New repository secret]** 클릭.
+      * **Name:** `RENDER_DEPLOY_HOOK`
+      * **Secret:** 아까 복사한 Render URL 붙여넣기.
+4.  **[Add secret]** 저장.
+
+-----
+
+## 5️⃣ CI/CD 파이프라인 완성 (Step 5: GitHub Actions)
+
+이제 GitHub가 코드를 받으면 **테스트 -\> 빌드 -\> (성공 시) 배포**하도록 지시서를 작성합니다.
+
+`.github/workflows/ci.yml` 파일을 생성하고 아래 내용을 붙여넣습니다.
 
 ```yaml
 name: CI/CD Pipeline
@@ -141,62 +149,63 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
+    # 1. 코드 가져오기
     - name: Checkout code
       uses: actions/checkout@v3
 
+    # 2. 파이썬 환경 설정
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
 
+    # 3. 라이브러리 설치
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run Tests (CI)
+    # 4. 테스트 실행 (여기서 실패하면 배포되지 않음!)
+    - name: Run Tests
       run: pytest
 
+    # 5. Docker 빌드 테스트
     - name: Build Docker Image
       run: docker build -t my-app .
+
+    # 6. Render로 배포 (Deploy Hook 실행)
+    - name: Deploy to Render
+      if: success() # 위 단계가 모두 성공했을 때만 실행
+      run: curl "${{ secrets.RENDER_DEPLOY_HOOK }}"
 ```
 
-3.  작성 후 다시 Git Push를 수행합니다.
-    ```bash
-    git add .
-    git commit -m "Add GitHub Actions workflow"
-    git push
-    ```
-4.  GitHub 저장소 상단의 **Actions** 탭에서 초록색 체크(✅)가 뜨는지 확인합니다.
+작성 후 변경 사항을 Push 합니다.
+
+```bash
+git add .
+git commit -m "Add CI/CD pipeline with Deploy Hook"
+git push
+```
 
 -----
 
-## 4️⃣ 자동 배포 체험하기 (Step 4: Continuous Deployment)
+## 6️⃣ 최종 체험: 자동 수정 배포 (Step 6: The Magic Loop)
 
-**Render** 또는 **Railway**와 같은 Docker 지원 클라우드 서비스를 사용하여 **"코드를 수정하면 자동으로 사이트가 업데이트되는"** 경험을 해봅니다.
+이제 모든 시스템이 구축되었습니다. 자동 배포를 체험해 봅니다.
 
-### 설정 방법 (Railway 예시)
-
-1.  [Railway](https://railway.app/) 로그인 후 `New Project` -\> `Deploy from GitHub repo` 선택.
-2.  이 저장소(`sko_git_docker_cicd`)를 선택.
-3.  자동으로 Dockerfile을 인식하여 배포가 시작됨.
-4.  배포 완료 후 제공된 URL로 접속하여 웹사이트 확인.
-
-### 🔄 자동 수정 배포 테스트 (The Magic Loop)
-
-이 과정이 핵심입니다\!
-
-1.  로컬 코드(`app.py`)에서 문구를 수정합니다.
-      * 예: `"Hello!..."` -\> `"안녕하세요! 자동 배포가 완료되었습니다!"`
-2.  Git으로 코드를 올립니다.
+1.  **코드 수정:** 로컬의 `app.py` 메시지를 변경합니다.
+      * `"Hello!..."` -\> `"안녕하세요! 테스트 통과 후 자동 배포되었습니다!"`
+2.  **Git Push:**
     ```bash
     git add .
-    git commit -m "문구 수정 테스트"
+    git commit -m "Update message"
     git push
     ```
-3.  **GitHub Actions**가 자동으로 테스트를 수행합니다.
-4.  **Railway/Render**가 변경 사항을 감지하고 자동으로 재배포합니다.
-5.  잠시 후 사이트 주소를 새로고침하면 문구가 바뀐 것을 확인할 수 있습니다\!
+3.  **관찰:**
+      * GitHub **Actions** 탭에서 테스트가 통과되는지 확인합니다.
+      * 테스트가 끝나면 Render 대시보드에서 **Deploy**가 시작되는지 확인합니다.
+4.  **결과:**
+      * 배포 완료 후 사이트 URL에 접속하면 문구가 바뀐 것을 볼 수 있습니다\!
 
 -----
 
