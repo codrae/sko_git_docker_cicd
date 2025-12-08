@@ -1,6 +1,5 @@
 name: CI/CD Pipeline
 
-# 언제 실행할지: main 브랜치에 코드가 push 될 때
 on:
   push:
     branches: [ "main" ]
@@ -10,26 +9,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. 내 코드를 가져온다
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # 2. Python 환경을 설정한다
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
 
-    # 3. 필요한 라이브러리를 설치한다
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    # 4. 테스트 코드를 실행한다 (CI의 핵심!)
     - name: Run Tests
       run: pytest
 
-    # 5. Docker 이미지가 잘 빌드되는지 확인한다
     - name: Build Docker Image
       run: docker build -t my-app .
+
+    # ▼▼▼ 이 부분이 추가된 거야! ▼▼▼
+    - name: Deploy to Render
+      if: success() # 위 단계들이 다 성공했을 때만 실행
+      run: curl "${{ secrets.RENDER_DEPLOY_HOOK }}"
