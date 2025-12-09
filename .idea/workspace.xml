@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="21b2f315-7afc-437e-b835-d687639f3140" name="Changes" comment="test : 444 추가" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;codrae&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/codrae/sko_git_docker_cicd.git&quot;,
+    &quot;accountId&quot;: &quot;6c99cb4a-ca82-4feb-b679-84b7cf391e92&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="36YQb2VC0yz0KAL5SXbHfCR7aCH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/kim-yongjin/Desktop/SKONS/25.12_git_docker_cicd",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.159" />
+        <option value="bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="21b2f315-7afc-437e-b835-d687639f3140" name="Changes" comment="" />
+      <created>1765181092322</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1765181092322</updated>
+      <workItem from="1765181094029" duration="2432000" />
+      <workItem from="1765241725212" duration="9632000" />
+    </task>
+    <task id="LOCAL-00001" summary="fix : requirements.txt 잘못된 파일명 수정">
+      <option name="closed" value="true" />
+      <created>1765181605496</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765181605496</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test : text 변경후 자동 배포 테스트">
+      <option name="closed" value="true" />
+      <created>1765182131731</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1765182131731</updated>
+    </task>
+    <task id="LOCAL-00003" summary="test : text 변경후 자동 배포 테스트">
+      <option name="closed" value="true" />
+      <created>1765183006345</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765183006345</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: CD 코드 추가">
+      <option name="closed" value="true" />
+      <created>1765183250411</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765183250411</updated>
+    </task>
+    <task id="LOCAL-00005" summary="test">
+      <option name="closed" value="true" />
+      <created>1765183327315</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1765183327315</updated>
+    </task>
+    <task id="LOCAL-00006" summary="docs : Update README.md">
+      <option name="closed" value="true" />
+      <created>1765183492083</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1765183492083</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat : health 체크 및 count 기능 추가">
+      <option name="closed" value="true" />
+      <created>1765258484729</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765258484730</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat : docker-compose.yml 추가">
+      <option name="closed" value="true" />
+      <created>1765258499207</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1765258499207</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat : 빠른 실행을 위한 Makefile 추가">
+      <option name="closed" value="true" />
+      <created>1765258515688</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1765258515688</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat : requirements.txt 업데이트">
+      <option name="closed" value="true" />
+      <created>1765258524177</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1765258524177</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat : Implement test_health function">
+      <option name="closed" value="true" />
+      <created>1765258550021</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1765258550021</updated>
+    </task>
+    <task id="LOCAL-00012" summary="test : 444 추가">
+      <option name="closed" value="true" />
+      <created>1765263433683</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1765263433683</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix : requirements.txt 잘못된 파일명 수정" />
+    <MESSAGE value="test : text 변경후 자동 배포 테스트" />
+    <MESSAGE value="feat: CD 코드 추가" />
+    <MESSAGE value="test" />
+    <MESSAGE value="docs : Update README.md" />
+    <MESSAGE value="feat : health 체크 및 count 기능 추가" />
+    <MESSAGE value="feat : docker-compose.yml 추가" />
+    <MESSAGE value="feat : 빠른 실행을 위한 Makefile 추가" />
+    <MESSAGE value="feat : requirements.txt 업데이트" />
+    <MESSAGE value="feat : Implement test_health function" />
+    <MESSAGE value="test : 444 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="test : 444 추가" />
+  </component>
+</project>
