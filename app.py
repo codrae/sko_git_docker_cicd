@@ -7,7 +7,7 @@ cache = redis.Redis(host='my-redis', port=6379)
 @app.route('/')
 def hello():
     # 문구를 마음대로 바꿔봐!
-    return f"Hello! 이것은 자동 배포된 웹사이트입니다! Test 수정! 222 333 {get_hit_count()}"
+    return f"Hello! 이것은 자동 배포된 웹사이트입니다! Test 수정! 222 333 444get_hit_count()}"
 
 @app.route('/health')
 def health_check():
