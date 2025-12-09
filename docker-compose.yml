@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  # 1번 선수: 우리가 만든 웹 서버
+  my-web:
+    build: .
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_DEBUG=1
+    depends_on:  # "redis가 켜져야 나도 켜질 수 있어!" (순서 보장)
+      - my-redis
+
+  # 2번 선수: Redis 데이터베이스 (이미 만들어진 것 가져오기)
+  my-redis:
+    image: "redis:alpine" # Docker Hub에 있는 공식 이미지 사용
